@@ -3,17 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 import psycopg2
-
+import os
 from fastapi import WebSocket
 from typing import Dict, List
 
 app = FastAPI()
-
-
-
-
-
-
 # ====== CORS ======
 app.add_middleware(
     CORSMiddleware,
@@ -28,17 +22,12 @@ app.add_middleware(
 # ====== MODELS ======
 class UserLogin(BaseModel):
     email: str
-    password: str
+    password: str        
 
 
 # ====== DB CONNECT ======
 def get_db():
-    conn = psycopg2.connect(
-        host="localhost",
-        database="xorazm_job",
-        user="postgres",
-        password="1234"
-    )
+    conn = psycopg2.connect(os.environ.get("postgresql://diplom_db_fi53_user:jiRbphWmN9IDd6997fIVmTBF01KI8ROL@dpg-d6eq51f5r7bs73chkmrg-a/diplom_db_fi53"))
     return conn
 
 
