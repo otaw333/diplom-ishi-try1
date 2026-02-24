@@ -9,10 +9,17 @@ from typing import Dict, List
 
 app = FastAPI()
 
+
+
+
+
+
 # ====== CORS ======
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://xorazm-job-frontend.onrender.com"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
