@@ -27,7 +27,9 @@ class UserLogin(BaseModel):
 
 # ====== DB CONNECT ======
 def get_db():
-    conn = psycopg2.connect(os.environ.get("postgresql://diplom_db_fi53_user:jiRbphWmN9IDd6997fIVmTBF01KI8ROL@dpg-d6eq51f5r7bs73chkmrg-a/diplom_db_fi53"))
+    conn = psycopg2.connect(
+        os.environ.get("postgresql://diplom_db_fi53_user:jiRbphWmN9IDd6997fIVmTBF01KI8ROL@dpg-d6eq51f5r7bs73chkmrg-a/diplom_db_fi53"),
+    sslmode="require")
     return conn
 
 
